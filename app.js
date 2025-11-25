@@ -1,6 +1,6 @@
 // app.js - Main Controller
 import { DOM } from './dom.js';
-import { UI } from href='./ui.js';
+import { UI } from './ui.js';
 import { fetchCountryData, fetchAllCountryNames } from './api.js';
 
 // 1. Initialize: Load the list of countries for autocomplete
