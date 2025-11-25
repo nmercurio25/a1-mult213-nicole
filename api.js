@@ -1,10 +1,9 @@
-// api.js - Network Requests
-const BASE_URL = 'https://restcountries.com/v3.1';
+
 
 // Get specific country data
 export async function fetchCountryData(countryName) {
     // We add fullText=true to avoid partial matches (e.g. searching "Ind" -> India)
-    const url = `${BASE_URL}/name/${countryName}?fullText=true`;
+    const url = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
     
     try {
         const response = await fetch(url);
@@ -22,7 +21,7 @@ export async function fetchCountryData(countryName) {
 
 // Get all country names for the dropdown list
 export async function fetchAllCountryNames() {
-    const url = `${BASE_URL}/all?fields=name`;
+    const url = `https://restcountries.com/v3.1/all?fields=name`;
     
     try {
         const response = await fetch(url);
