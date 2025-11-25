@@ -1,13 +1,13 @@
 :root {
     --primary-color: #334980;
-    --accent-color: #3498db;
+    --accent-color: #24c521;
     --bg-color: #f4f4f9;
     --card-bg: #ffffff;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@ button:hover {
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
     text-align: center;
