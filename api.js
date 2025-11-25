@@ -1,30 +1,29 @@
-// api.js - Handles all network requests
-
+// api.js - Network Requests
 const BASE_URL = 'https://restcountries.com/v3.1';
 
-// Endpoint 1: Search by name
-// Note the 'export' keyword below
+// Get specific country data
 export async function fetchCountryData(countryName) {
+    // We add fullText=true to avoid partial matches (e.g. searching "Ind" -> India)
     const url = `${BASE_URL}/name/${countryName}?fullText=true`;
+    
     try {
         const response = await fetch(url);
         
-        // Custom error handling for 404 (Not Found)
         if (!response.ok) {
-            throw new Error(`Country not found (${response.status})`);
+            throw new Error(`Country not found or API error (${response.status})`);
         }
         
         const data = await response.json();
-        return data[0]; // The API returns an array, we want the first item
+        return data[0]; // API returns an array, we want the first object
     } catch (error) {
-        throw error; // Re-throw to be handled by the controller
+        throw error;
     }
 }
 
-// Endpoint 2: Get all names (for autocomplete)
-// Note the 'export' keyword below
+// Get all country names for the dropdown list
 export async function fetchAllCountryNames() {
     const url = `${BASE_URL}/all?fields=name`;
+    
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to load list');
@@ -32,7 +31,7 @@ export async function fetchAllCountryNames() {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error("Could not fetch autocomplete data", error);
+        console.error("Autocomplete error:", error);
         return [];
     }
 }
