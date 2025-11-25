@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Info Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌍 Global Dashboard</h1>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="country-input" list="country-list" placeholder="Enter a country name (e.g., France)">
+            <datalist id="country-list"></datalist>
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div id="result-container" class="result-container">
+            <p class="placeholder-text">Search for a country to see details.</p>
+        </div>
+    </main>
+
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
