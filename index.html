@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Info Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
@@ -14,8 +16,11 @@
 
     <main>
         <div class="search-container">
-            <input type="text" id="country-input" list="country-list" placeholder="Enter a country name (e.g., France)">
+            <input type="text" id="country-input" list="country-list" placeholder="Enter country...">
             <datalist id="country-list"></datalist>
+
+            <input type="number" id="fact-count" min="1" max="10" value="3" placeholder="#" style="max-width: 60px;">
+
             <button id="search-btn">Search</button>
         </div>
 
@@ -24,7 +29,8 @@
         </div>
     </main>
 
-<script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
 
 </body>
+
 </html>

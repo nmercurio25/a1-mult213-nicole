@@ -12,10 +12,18 @@ window.addEventListener('DOMContentLoaded', async () => {
 // 2. Main Search Logic
 const handleSearch = async () => {
     const query = DOM.countryInput.value.trim();
-    
-    // Validation: Don't search if empty
+    // NEW: Get the value (convert string to integer)
+    const factCount = parseInt(DOM.factCountInput.value) || 3; // Default to 3 if empty
+
+    // Validation
     if (!query) {
         UI.renderError("Please enter a country name.");
+        return;
+    }
+    
+    // Validate number range (keep it between 1 and 10)
+    if (factCount < 1 || factCount > 10) {
+        UI.renderError("Please choose between 1 and 10 facts.");
         return;
     }
 
@@ -23,7 +31,8 @@ const handleSearch = async () => {
 
     try {
         const countryData = await fetchCountryData(query);
-        UI.renderCard(countryData);
+        // NEW: Pass the factCount to the render function
+        UI.renderCard(countryData, factCount); 
     } catch (error) {
         UI.renderError(error.message);
     }
