@@ -3,7 +3,8 @@
 const BASE_URL = 'https://restcountries.com/v3.1';
 
 // Endpoint 1: Search by name
-async function fetchCountryData(countryName) {
+// Note the 'export' keyword below
+export async function fetchCountryData(countryName) {
     const url = `${BASE_URL}/name/${countryName}?fullText=true`;
     try {
         const response = await fetch(url);
@@ -21,7 +22,8 @@ async function fetchCountryData(countryName) {
 }
 
 // Endpoint 2: Get all names (for autocomplete)
-async function fetchAllCountryNames() {
+// Note the 'export' keyword below
+export async function fetchAllCountryNames() {
     const url = `${BASE_URL}/all?fields=name`;
     try {
         const response = await fetch(url);

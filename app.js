@@ -1,39 +1,34 @@
-// app.js - Main controller
+// app.js - Main Controller
+import { DOM } from './dom.js';
+import { UI } from './ui.js';
+import { fetchCountryData, fetchAllCountryNames } from './api.js';
 
-const searchBtn = document.getElementById('search-btn');
-const countryInput = document.getElementById('country-input');
-
-// 1. Initialize: Load the autocomplete list (Endpoint 2)
+// 1. Initialize Autocomplete
 window.addEventListener('DOMContentLoaded', async () => {
     const countries = await fetchAllCountryNames();
-    renderAutocomplete(countries);
+    UI.renderAutocomplete(countries);
 });
 
-// 2. Handle Search
+// 2. Search Logic
 const handleSearch = async () => {
-    const query = countryInput.value.trim();
-    
+    const query = DOM.countryInput.value.trim();
     if (!query) {
-        renderError("Please enter a country name.");
+        UI.renderError("Please enter a country name.");
         return;
     }
 
-    renderLoading();
+    UI.renderLoading();
 
     try {
-        // Call the API function
         const countryData = await fetchCountryData(query);
-        // Call the UI function
-        renderCountryCard(countryData);
+        UI.renderCard(countryData);
     } catch (error) {
-        renderError(error.message);
+        UI.renderError(error.message);
     }
 };
 
-// Event Listener for Click
-searchBtn.addEventListener('click', handleSearch);
-
-// Event Listener for "Enter" key
-countryInput.addEventListener('keypress', (e) => {
+// 3. Event Listeners
+DOM.searchBtn.addEventListener('click', handleSearch);
+DOM.countryInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleSearch();
 });
